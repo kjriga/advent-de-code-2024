@@ -1,7 +1,3 @@
-def diff(a,b)
-  (a - b).abs
-end
-
 arr1 = []
 arr2 = []
 
@@ -11,14 +7,12 @@ lines = File.readlines("input.txt").each {
   arr2.push(b.to_i)
 }
 
-arr1_sorted = arr1.sort
-arr2_sorted = arr2.sort
-
 ans = 0
 
-arr1.length.times do |i|
-  ans += diff(arr1_sorted[i], arr2_sorted[i])
+arr1.each do |val|
+  num_times_in_array = arr2.grep(val).count
+  ans += (num_times_in_array * val)
 end
 
-puts ans
+puts "Le answer is: #{ans}"
 
